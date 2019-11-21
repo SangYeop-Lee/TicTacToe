@@ -1,0 +1,10 @@
+ctrl shift k : delete row
+ctrl enter : append row
+alt down : move row downward
+shift alt down: copying cursor
+hello, world
+hello, world 
+hello, world 
+ctrl f2 : selecting all the selected word
+ctrl shift l : selecting all the selected word
+ctrl / : commenting

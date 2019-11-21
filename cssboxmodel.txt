@@ -1,0 +1,14 @@
+
+
+
+content
+margin : outside the border
+border : from edge of the box to inside the obx
+padding : inside the border
+
+
+
+margin | border | padding
+    here is
+    the edge
+    of content
