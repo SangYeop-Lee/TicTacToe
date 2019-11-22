@@ -3,7 +3,6 @@
     <head>
         <title>Tasks</title>
         <script>
-            let counter = 0;
             document.addEventListener('DOMContentLoaded', () => {
 
                 document.querySelector('#new-task').onsubmit = () => {
@@ -11,26 +10,13 @@
                     // create li element
                     // li = <li>{task}</li>
                     const li = document.createElement('li');
-                    li.setAttribute("class", counter);
-                    const button = document.createElement('button');
-                    
-
                     li.innerHTML = document.querySelector('#task').value;
-                    li.appendChild = button;
-                   
-                    // Add new item to a tasks list
+
+                    // ADd new item to task list
                     document.querySelector('#tasks').append(li);
-                    
-                    button.setAttribute("class", counter);
-                    button.innerHTML = "delete";
-                    str = '.%COUNTER%'
-                    str = str.replace(/%\w+%/g, counter)
-                    document.querySelector('.%counter%').innerHTML = button
 
                     // Clear input field
                     document.querySelector('#task').value = '';
-
-                    counter ++;
 
                     // Stop form from submitting
                     return false;
