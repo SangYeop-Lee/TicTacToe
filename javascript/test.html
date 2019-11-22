@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector("button").onclick = count;
+                // why count?
+                // js treats functions as variable
+                // if it is count(), function runs as soon as the code is read.
+
+                // why anonymous function
+                // you can also name the function, put it outside the eventlistener,
+                // and write {name} at function () {}.
+            });       
+
+            let counter = 0;
+
+            function count() {
+                counter ++;
+                document.querySelector("#counter").innerHTML = counter;
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="counter">0</h1>
+        <button>Click here!</button>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello</title>
+        <script>
+            function hello() {
+                const headings = document.querySelectorAll("h1");
+                for (const heading of headings) {
+                    heading.innerHTML = "Hello";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        <h1>Welcome!</h1>
+        <h1>Welcome!</h1>
+        <h1>Welcome!</h1>
+        <h1>Welcome!</h1>
+        <button onclick="hello()">Click here!</button>
+    </body>
+</html>
