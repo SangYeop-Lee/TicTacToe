@@ -1,59 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tasks</title>
-        <script>
-            let counter = 0;
-            document.addEventListener('DOMContentLoaded', () => {
-
-                document.querySelector('#new-task').onsubmit = () => {
-
-                    // create li element
-                    // li = <li>{task}</li>
-                    const li = document.createElement('li');
-                    li.setAttribute("class", 'c'+counter);
-
-                    const button = document.createElement('button');
-                    button.setAttribute("class", 'c'+counter);
-                    button.innerHTML = 'delete';
-
-                    counter ++;
-
-                    li.innerHTML = document.querySelector('#task').value+"<br>";
-                    li.appendChild(button);
-
-                    delete li;
-                   
-                    // Add new item to a tasks list
-                    document.querySelector('#tasks').append(li);
-
-                    // Clear input field
-                    document.querySelector('#task').value = '';
-
-                    // Stop form from submitting
-                    return false;
-                };
-
-                const target = document.getElementById('tasks');
-                const observer = new MutationObserver(function (mutation) {
-                    document.querySelectorAll('button').forEach(function(button) {
-                        button.onclick = function (clicked) {
-                            document.querySelector('.'+button.className).remove();
-                        };
-                    });
-                });
-                var config = {childList: true};
-                observer.observe(target, config)                
-            });
-
-            </script>
+        <title>Quiz</title>
+        <link href="styles.css" rel="stylesheet">
+        <script src="scripts.js"></script>
     </head>
     <body>
-        <h1>Tasks</h1>
-        <ul id="tasks"></ul>
-        <form id="new-task">
-            <input id="task" autocomplete="off" autofocus placeholder="New Task" type="text">
-            <input type="submit">
-        </form>
+        <h1>Quiz</h1>
+        <h2 id="question"></h2>
+        <div id="options"></div>
+        <div>
+            Questions correct: <span id="correct">0 of 0 </span>
+        </div>
     </body>
 </html>
