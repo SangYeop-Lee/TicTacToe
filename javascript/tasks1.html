@@ -33,20 +33,17 @@
                     // Stop form from submitting
                     return false;
                 };
-
-                const target = document.getElementById('tasks');
-                const observer = new MutationObserver(function (mutation) {
-                    document.querySelectorAll('button').forEach(function(button) {
-                        button.onclick = function (clicked) {
-                            document.querySelector('.'+button.className).remove();
-                        };
-                    });
-                });
-                var config = {childList: true};
-                observer.observe(target, config)                
             });
 
-            </script>
+            document.addEventListener('DOMNodeInserted', () => {
+                document.querySelectorAll('button').forEach(function(button) {
+                    button.onclick = function (clicked) {
+                        document.querySelector('.'+button.className).remove();
+                    };
+                });
+            }, false);
+            
+        </script>
     </head>
     <body>
         <h1>Tasks</h1>
