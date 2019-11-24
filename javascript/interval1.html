@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>interval</title>
+        <script>
+        
+            // Set starting value of counter to 0
+            if(!localStorage.getItem('counter'))
+                localStorage.setItem('counter', 0);
+
+            // Load current value of counter
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#counter').innerHTML = localStorage.getItem('counter');
+
+                // Count every time button is
+                document.querySelector('button').onclick = () => {
+                    // Increment current counter
+                    let counter = localStorage.getItem('counter');
+                    counter ++;
+
+                    // update counter
+                    document.querySelector('#counter').innerHTML = counter;
+                    localStorage.setItem('counter', counter);
+                }
+            });
+        
+        </script>
+    </head>
+    <body>
+        <h1 id="counter">0</h1>
+        <button>Click me!</button>
+    </body>
+</html>
