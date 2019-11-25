@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello</title>
+        <style>
+            @keyframes grow {
+                0% {
+                    left: 0%;
+                    color: red;
+                }
+                70% {
+                    left: 30%;
+                    color: blue;
+                }
+                100% {
+                    left:0%;
+                    color: springgreen;
+                }
+            }
+
+            h1 {
+                position: relative;
+                animation-name: grow;
+                animation-fill-mode: forwards;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+    </body>
+</html>

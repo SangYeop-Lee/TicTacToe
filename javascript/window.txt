@@ -1,0 +1,20 @@
+|
+|
+window.scrollY
+|
+|
+
+|
+|
+|
+|
+|
+window.innerHeight-----------window.innerWidth---------------------------
+|
+|
+|
+|
+|
+
+
+document.body.offsetHeight = the height of a page

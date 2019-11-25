@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+    </head>
+    <body>
+        <svg id="svg" style="width: 100%; height:800px;"></svg>
+    </body>
+    <script>
+
+        const svg = d3.select('#svg');
+
+        const r = svg.append('rect')
+                     .attr('width', 200)
+                     .attr('height', 800)
+                     .attr('x', 200)
+                     .attr('y', 200)
+                     .style('fill', 'black');
+
+        const red = svg.append('circle')
+                       .attr('cx', 300)
+                       .attr('cy', 300)
+                       .attr('r', 75)
+                       .style('fill', 'grey');
+
+        red.on('click', function() {
+            d3.select(this).transition()
+                           .style('fill', 'red');
+        });
+
+        const yellow = svg.append('circle')
+                          .attr('cx', 300)
+                          .attr('cy', 450)
+                          .attr('r', 75)
+                          .style('fill', 'grey');
+
+        yellow.on('click', function() {
+            d3.select(this).transition()
+                           .style('fill', 'yellow');
+        });
+
+        const green = svg.append('circle')
+                         .attr('cx', 300)
+                         .attr('cy', 600)
+                         .attr('r', 75)
+                         .style('fill', 'grey');
+        
+        
+        green.on('click', function() {
+            d3.select(this).transition()
+                           .style('fill', 'green');
+        });
+        
+    </script>
+</html>
