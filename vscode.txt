@@ -8,3 +8,4 @@ hello, world
 ctrl f2 : selecting all the selected word
 ctrl shift l : selecting all the selected word
 ctrl / : commenting
+shitf alt ->
