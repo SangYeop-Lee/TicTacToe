@@ -12,6 +12,8 @@ def main():
     reader = csv.reader(f)
     counter = 0
 
+    db.execute("CREATE TABLE authors (id SERIAL PRIMARY KEY, author VARCHAR NOT NULL);")
+
     authors = set()
     for row in reader:
         authors.add(row[2])

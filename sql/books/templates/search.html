@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+{% if books %}
+    <ul>
+        {% for book in books %}
+            <h1>{{ book[1] }}</h1>
+            <li>ispn: {{ book[0] }}</li>
+
+            <li>author: {{ book[2] }}</li>
+            <li>year: {{ book[3] }}</li>
+
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <h1>Failed to find a book.</h1>
+{% endif %}
+
+
+{% endblock %}

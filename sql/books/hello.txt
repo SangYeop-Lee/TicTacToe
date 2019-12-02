@@ -1,1 +1,17 @@
+Host
+ec2-174-129-253-47.compute-1.amazonaws.com
+
+Database
+des9kvvoj61ccj
+
+User
+cefkqtjabvrucf
+
+Password
+2e49fc125820bb5b154e244ac8a6917346dc4eb1f1fdaf6c4f4e8732811016ec
+
+URI
 postgres://cefkqtjabvrucf:2e49fc125820bb5b154e244ac8a6917346dc4eb1f1fdaf6c4f4e8732811016ec@ec2-174-129-253-47.compute-1.amazonaws.com:5432/des9kvvoj61ccj
+
+Heroku CLI
+heroku pg:psql postgresql-cylindrical-64874 --app sangyeop-books
