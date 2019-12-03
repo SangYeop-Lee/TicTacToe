@@ -1,4 +1,4 @@
-from falsk_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
@@ -12,5 +12,5 @@ class Flight(db.Model):
 class Passenger(db.Model):
     __tablename__ = "passengers"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullabe=False)
+    name = db.Column(db.String, nullable=False)
     flight_id = db.Column(db.Integer, db.ForeignKey("flights.id"), nullable=False)
