@@ -1,0 +1,2 @@
+counter0 : setState sends current state to javascript.
+counter1 : this.state.count to oldState.count for secuthyrity reason (race condition)

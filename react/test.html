@@ -5,26 +5,23 @@
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-        <title>Hello</title>
+        <title>Addition</title>
     </head>
     <body>
         <div id="app"></div>
         <script type="text/babel">
 
-            class Counter extends React.component {
+            class App extends React.component {
 
                 constructor(props) {
                     super(props);
+                    this.state = {
 
-
-
-
-
-
+                    }
                 }
             }
 
-            ReactDOM.render(<Counter />, document.querySelector('#app'))
+            ReactDOM.render(<App />, document.querySelector('#app'))
         </script>
     </body>
 </html>
