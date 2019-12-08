@@ -5,6 +5,12 @@
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
+        <style>
+            td {
+                margin: black 1px solid;
+            }
+        </style>
+
         <title>TODO</title>
     </head>
     <body>
@@ -16,54 +22,77 @@
                 constructor(props) {
                     super(props);
                     this.state = {
-                        tasks: [],
-                        input: "",
+                        cards: [],
+                        input: ["", ""]
                     };
                 }
 
                 render() {
+                    return this.renderCardsEditor();
+                }
+
+                renderCardsEditor() {
                     return (
                         <div>
-                            <h1>Tasks</h1>
-                            <h2>{this.state.tasks.length} left to do.</h2>
-                            <ul>
-                                {this.state.tasks.map((task, i) =>
-                                    <li key={i}>
-                                        <button data-index={i} onClick={this.deleteTask}>Delete</button>
-                                        {task}
-                                    </li>
+                            <h1>Card Editor</h1>
+                            <table>
+                                <tr>
+                                    <td><h2>Front</h2></td>
+                                    <td><h2>Back</h2></td>
+                                    <td><h2>Delete</h2></td>
+                                </tr>
+                                {this.state.cards.map((card, i) =>
+                                    <tr key={i}>
+                                        <td>{card[0]}</td>
+                                        <td>{card[1]}</td>
+                                        <td><button data-index={i} onClick={this.deleteCard}>Delete</button></td>
+                                    </tr>
                                 )}
-                            </ul>
+                            </table>
                             <div>
-                                <input onKeyPress={this.inputKeyPress} autoFocus onChange={this.handleChange} value={this.state.input} />
+                                {this.state.input.map((input, i) =>
+                                    <input onKeyPress={this.inputKeyPress} onChange={this.handleChange} key={i} data-index={i} value={input} />
+                                )}
+                                <button onClick={this.addCard}>Add Card</button>
                             </div>
                         </div>
                     )
                 }
 
-                inputKeyPress = (event) => {
-                    if (event.key === "Enter") {
-                        this.setState(state => ({
-                            tasks: [...state.tasks, state.input],
-                            input: ""
-                        }))
-                    }
-                }
 
                 handleChange = (event) => {
-                    this.setState({
-                        input: event.target.value
+                    const index = event.target.dataset.index
+                    const value = event.target.value
+                    this.setState(state => {
+                        const input = state.input
+                        input[index] = value
+                        return {
+                            input
+                        }
                     })
                 }
 
-                deleteTask = (event) => {
+                addCard = () => {
+                    this.setState(state => ({
+                        cards: [...state.cards, state.input],
+                        input: ["", ""]
+                    }))
+                }
+
+                inputKeyPress = (event) => {
+                    if (event.key === "Enter") {
+                        this.addCard();
+                    }
+                }
+
+                deleteCard = (event) => {
                     const index = event.target.dataset.index
 
                     this.setState(state => {
-                        const tasks = [...this.state.tasks];
-                        tasks.splice(index, 1);
+                        const cards = [...state.cards];
+                        cards.splice(index, 1);
                         return{
-                            tasks
+                            cards
                         }
                     })
                 }

@@ -1,17 +1,14 @@
 Host
 ec2-23-21-70-39.compute-1.amazonaws.com
 
-Database
-d1974dq36r5jhs
-
 User
 rllsampaizaayp
 
-Port
-5432
-
 Password
 d43f3bdcded9b90ae41b69f13770eb99214b0fcc84f9679d8b77100794a5b017
+
+Database
+d1974dq36r5jhs
 
 URI
 postgres://rllsampaizaayp:d43f3bdcded9b90ae41b69f13770eb99214b0fcc84f9679d8b77100794a5b017@ec2-23-21-70-39.compute-1.amazonaws.com:5432/d1974dq36r5jhs
