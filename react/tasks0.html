@@ -29,7 +29,6 @@
                             <ul>
                                 {this.state.tasks.map((task, i) =>
                                     <li key={i}>
-                                        <button data-index={i} onClick={this.deleteTask}>Delete</button>
                                         {task}
                                     </li>
                                 )}
@@ -56,17 +55,6 @@
                     })
                 }
 
-                deleteTask = (event) => {
-                    const index = event.target.dataset.index
-
-                    this.setState(state => {
-                        const tasks = [...this.state.tasks];
-                        tasks.splice(index, 1);
-                        return{
-                            tasks
-                        }
-                    })
-                }
             }
 
             ReactDOM.render(<App />, document.querySelector('#app'))

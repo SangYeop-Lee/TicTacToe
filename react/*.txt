@@ -7,3 +7,6 @@ const list1 = [1, 2, 3, 4, 5]; # 1~5
 const copy = [...list1, 6]; # 1~6
 
 list1.splice(3, 1) # remove elements starting with index 3, pull out 1 element.
+
+tasks1 : when using setState, if you dont need any functions(just changing values), this.setState(state=>({})) would be okay
+         else, when you need to loop, condition or anything else, you should return state values.
