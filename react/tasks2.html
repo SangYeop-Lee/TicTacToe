@@ -29,8 +29,8 @@
                             <ul>
                                 {this.state.tasks.map((task, i) =>
                                     <li key={i}>
-                                        <button data-index={i} onClick={this.deleteTask}>Delete</button>
                                         {task}
+                                        <button data-index={i} onClick={this.deleteTask}>Delete</button>
                                     </li>
                                 )}
                             </ul>

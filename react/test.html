@@ -6,8 +6,18 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
         <style>
+            table {
+                border-collapse: collapse;
+            }
             td {
-                margin: black 1px solid;
+                width: 150px;
+                border: 1px solid black;
+                text-align: center;
+            }
+            #id {
+                width: 400px;
+                height: 200px;
+                font: 45px black bold;
             }
         </style>
 
@@ -22,16 +32,60 @@
                 constructor(props) {
                     super(props);
                     this.state = {
+                        viewFront: true,
                         cards: [],
-                        input: ["", ""]
+                        input: ["", ""],
+                        viewEditor: true,
+                        index: 0
                     };
                 }
 
                 render() {
-                    return this.renderCardsEditor();
+                    if (this.state.viewEditor) {
+                        return this.renderEditor();
+                    } else {
+                        return this.renderViewer();
+                    }
                 }
 
-                renderCardsEditor() {
+                renderViewer() {
+                    return (
+                        <div>
+                            <button onClick={this.turnCard} id="card">{this.state.viewFront ? this.state.cards[this.state.index][0] : this.state.cards[this.state.index][1]}</button>
+                            <button onClick={this.nextCard}>Next Card</button>
+                            <button onClick={this.switchView}>Switch to Editor</button>
+                        </div>
+                    )
+                }
+
+                switchView = () => {
+                    const boolean = this.state.viewEditor ? false : true
+                    this.setState({
+                        viewEditor: boolean
+                    })
+                }
+
+                turnCard = () => {
+                    const boolean = this.state.viewFront ? false : true
+                    this.setState({
+                        viewFront: boolean
+                    })
+                }
+
+                nextCard = () => {
+
+                    this.setState(state => ({
+                        index: state.index+1
+                    }))
+
+                    if (this.state.index+1 === this.state.cards.length) {
+                        this.setState({
+                            index: 0
+                        })
+                    }
+                }
+
+                renderEditor() {
                     return (
                         <div>
                             <h1>Card Editor</h1>
@@ -55,6 +109,7 @@
                                 )}
                                 <button onClick={this.addCard}>Add Card</button>
                             </div>
+                            <button onClick={this.switchView}>Switch to Viewer</button>
                         </div>
                     )
                 }
