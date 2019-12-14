@@ -16,3 +16,13 @@
     letter-spacing: -3px;
     font-size: 40px;
 }
+
+/* dateTime css */
+#year {
+    font-size: 30px;
+    text-align: center;
+}
+.dateTime-grid {
+    display:grid;
+    grid-template-columns: 90px 60px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Gelasio|Raleway|Montserrat&display=swap" rel="stylesheet">
+
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="navbar.css" />
+    
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <style>
+            
+        </style>
+
+        <title>TODO</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="text/babel">
+
+            class DateTime extends React.Component {
+
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        today: new Date()
+                    };
+                }
+
+                render() {
+                    return (
+                        <div className="grid-item">
+                            {this.dateTime()}
+                        </div>
+                    )
+                }
+
+                dateTime () {
+                    const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
+                    const dayNames = ["Mon.", "Tues.", "Wed.", "Thur.", "Fri.", "Sat.", "Sun."]
+                    return (
+                        <div className="dateTime-grid">
+                            <div id="year" className="grid-item">{this.state.today.getFullYear()}</div>
+                            <div className="grid-item">
+                                <div id="monthDate">{monthNames[this.state.today.getMonth()] + " " + this.state.today.getDate()}</div>
+                                <div id="day">{dayNames[this.state.today.getDay()]}</div>
+                            </div>
+                        </div>
+                    )
+                }
+
+            //     weather() {
+            //         // use openweathermap api
+            //         const lat = 
+            //         const lon = 
+            //         fetch(`https://community-open-weather-map.p.rapidapi.com/weather?lat=${lat}&lon=${state.lon}&callback=test&id=2172797&units=%2522metric%2522%20or%20%2522imperial%2522&mode=xml%252C%20html&q=Seoul`, {
+            //             "method": "GET",
+            //             "headers": {
+            //                 "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+            //                 "x-rapidapi-key": "132de901f2msh07ddc105ef81e6bp1895cdjsnfc72e16418a9"
+            //             }
+            //         })
+            //         .then(response => response.json())
+            //         .then(data => {console.log(data)})
+            //         .catch(err => {
+            //             console.log(err);
+            //         });
+            //     }
+                
+            }
+
+            class Sidebar extends React.Component {
+
+                render() {
+                    const string = this.props.height.toString() + "px"
+                    const tempStyle={
+                        margin-top: {string},
+                    }
+                    return(
+                        <div style={tempStyle}>
+                            {this.props.height}
+                        </div>
+                    )
+                }
+            }
+            
+            class App extends React.Component {
+
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        height: 19
+                    }
+                }
+
+                box = null;
+
+                render () {
+                    return (
+                        <div>
+                            {this.renderNavbar()}
+                            <Sidebar 
+                                height={this.state.height}
+                            />
+                        </div>
+                    )
+                }
+                
+                componentDidMount () {
+                    this.setState({
+                        height: this.box.clientHeight
+                    })
+                }
+
+                renderNavbar () {
+                    return (
+                        <div id="navbar-top" ref={ref => {
+                            this.box = ref;
+                        }}>
+                            <DateTime />
+                            <div id="home" className="grid-item">hello</div>
+                            <div className="grid-item"></div>
+                        </div>
+                    )
+                }
+            }
+
+            ReactDOM.render(<App />, document.querySelector('#app'))
+        </script>
+    </body>
+</html>
