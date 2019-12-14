@@ -1,2 +1,13 @@
-일기장
-qna? faq?
+0. Login page
+1. Homepage
+    1. Navbar
+
+    2. D-days() and Todo lists(todo / duedate)
+    3. Calender
+
+    4. Diaries
+    5. Pictures
+
+2. Calender pages
+
+3. Diary and Pictures

@@ -1,0 +1,18 @@
+#navbar-top {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: beige;
+    padding: 20px;
+    margin-left: -10px;
+    display: grid;
+    grid-template-columns: 150px auto 150px;
+}
+#navbar-top #home {
+    font-family: Raleway;
+    text-align: center;
+    color: brown;
+    letter-spacing: -3px;
+    font-size: 40px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Gelasio|Raleway|Montserrat&display=swap" rel="stylesheet">
+
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="navbar.css" />
+        
+        <title>sangyeop-lee</title>
+
+        <style>
+            .main-grid {
+                background-color: grey;
+                margin-top: 87px;
+                width: 100%;
+                height: 1000px;
+
+                padding: 20px;
+                margin-left: -10px;
+                
+                display: grid;
+                grid-template-columns: 200px auto;
+            }
+            .main-grid .grid-item {
+                background-color: white;
+            }
+
+            .main-grid #sidebar #d-day {
+                text-align: center;
+
+            }
+
+            #another-grid {
+                display: grid;
+                grid-template-columns: auto 500px;
+            }
+            #another-grid .grid-item{
+                background-color: beige;
+            }
+            #another-grid .grid-item .diary {
+                font-size: 24px;
+                padding: 20px;
+            }
+
+            td {
+                width: 1fr;
+            }
+            table {
+                width: 500px;
+            }
+
+            caption {
+                font-size: 24px;
+                font-weight: 700;
+            }
+            
+            hr {
+                width: 90%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="navbar-top">
+            <div class="grid-item">
+                <div>2019.12.14.</div>
+                <div>맑음</div>
+            </div>
+            <div id="home" class="grid-item">sangyeop lee</div>
+            <div class="grid-item"></div>
+        </div>
+        <div class="main-grid">
+            <div id="sidebar" class="grid-item">
+                <div id="d-day">
+                    <h4>D+37</h4>
+                    <h4>D-10</h4>
+                </div>
+                <hr>
+                <ul id="todo">
+                    <li>foo</li>
+                    <li>bar</li>
+                    <li>baz</li>
+                </ul>
+                
+            </div>
+            <div class="grid-item" id="another-grid">
+                <div id="diary" class="grid-item">
+                    <div class="diary">diary 1</div><hr>
+                    <div class="diary">diary 2</div><hr>
+                    <div class="diary">diary 3</div><hr>
+                    <div class="diary">diary 4</div><hr>
+                </div>
+                <div id="calender" class="grid-item">
+                    <table>
+                        <caption>December</caption>
+                        <thead>
+                            <td>Sun</td>
+                            <td>Mon</td>
+                            <td>Tue</td>
+                            <td>Wed</td>
+                            <td>Thu</td>
+                            <td>Fri</td>
+                            <td>Sat</td>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
