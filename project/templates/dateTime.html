@@ -4,15 +4,11 @@
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="navbar.css">
         <style>
-            #year {
-                font-size: 30px;
-                text-align: center;
-            }
-            .dateTime-grid {
-                display:grid;
-                grid-template-columns: 90px 60px;
+            #main {
+                background-color: black;
+                
             }
         </style>
 
@@ -27,16 +23,68 @@
                 constructor(props) {
                     super(props);
                     this.state = {
-                        today: new Date()
-                    };
+                        dDay: ["item1", "item2", "item3", "item4"],
+                        todo: ["todo1","todo2", "todo3", "todo4"],
+                        today: new Date(),
+                    }
+                }
+                
+                render() {
+                    return (
+                        <div>
+                            <Navbar 
+                                today={this.state.today}
+                            />
+                            <Sidebar 
+                                dDay={this.state.dDay}
+                                todo={this.state.todo}
+                            />
+                        </div>
+
+                    )
+                }
+            }
+
+            class Main extends React.Component {
+                
+                render() {
+                    return (
+                        <div id="main">
+                            
+                        </div>
+                    )
                 }
 
+                renderCalendar() {
+
+                }
+            }
+
+            class Sidebar extends React.Component {
+                
+                render() {
+                    return (
+                        <div id="sidebar">
+                            <div id="dDay">
+                                {this.props.dDay.map((item, i) => <h4 key={i}>{item}</h4>)}
+                            </div>
+                            <hr />
+                            <ul id="todo">
+                                {this.props.todo.map((item, i) => <li key={i}>{item}</li>)}
+                            </ul>
+                        </div>
+                    )
+                }
+            }
+
+            class Navbar extends React.Component {
+
+                
                 render() {
                     return (
                         <div id="navbar-top">
                             <div className="grid-item">
                                 {this.dateTime()}
-                                <div>맑음</div>
                             </div>
                             <div id="home" className="grid-item">hello</div>
                             <div className="grid-item"></div>
@@ -44,15 +92,17 @@
                     )
                 }
 
+
+
                 dateTime () {
-                    const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
-                    const dayNames = ["Mon.", "Tues.", "Wed.", "Thur.", "Fri.", "Sat.", "Sun."]
+                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
+                    const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
                     return (
-                        <div class="dateTime-grid">
-                            <div id="year" class="grid-item">{this.state.today.getFullYear()}</div>
-                            <div class="grid-item">
-                                <div id="monthDate">{monthNames[this.state.today.getMonth()] + " " + this.state.today.getDate()}</div>
-                                <div id="day">{dayNames[this.state.today.getDay()]}</div>
+                        <div className="dateTime-grid">
+                            <div id="year" className="grid-item">{this.props.today.getFullYear()}</div>
+                            <div className="grid-item">
+                                <div id="monthDate">{monthNames[this.props.today.getMonth()] + " " + this.props.today.getDate()}</div>
+                                <div id="day">{dayNames[this.props.today.getDay()]}</div>
                             </div>
                         </div>
                     )

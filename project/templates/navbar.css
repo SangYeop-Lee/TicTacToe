@@ -1,28 +1,61 @@
+
+
+/* navbar css */
+
 #navbar-top {
     overflow: hidden;
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: beige;
+    background-color: #f8f1e9;
     padding: 20px;
     margin-left: -10px;
     display: grid;
-    grid-template-columns: 150px auto 150px;
+    grid-template-columns: 240px auto 240px;
 }
 #navbar-top #home {
     font-family: Raleway;
     text-align: center;
-    color: brown;
+    color: #664c34;
     letter-spacing: -3px;
     font-size: 40px;
 }
 
+
 /* dateTime css */
+
 #year {
     font-size: 30px;
     text-align: center;
 }
 .dateTime-grid {
     display:grid;
-    grid-template-columns: 90px 60px;
+    grid-template-columns: 90px 150px;
 }
+
+#monthDate {
+    font-size: 20px;
+}
+
+#day {
+    font-size: 15px;
+}
+
+
+/* sidebar css */
+
+#sidebar {
+    position: fixed;
+    top:103px;
+    width: 150px;
+    height: 1400px;
+    margin: 20px;
+    background-color: white;
+}
+#sidebar #dDay {
+    text-align: center;
+}
+#sidebar hr {
+    width: 100%;
+}
+
