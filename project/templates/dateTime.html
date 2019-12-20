@@ -107,19 +107,17 @@
                     }
                     first.setDate(first.getDate()-first.getDay())
 
-                    console.log(first, end)
-                    
                     var table = []
-                    var date=new Date(first)
-                    for(; date!==end;) {
+                    var date = new Date(first)
+                    for(; date<=end; ) {
                         var children = []
-                        for (; date.getDay()!==6; date.setDate(date.getDate()+1)) {
-                            var tmp = date.getDate()
-                            console.log(tmp)
-                            children.push({tmp})
+                        for (var i = 0; i < 7; i++, date.setDate(date.getDate()+1)) {
+                            children.push(date.getDate())
                         }
                         table.push(children)
                     }
+                    
+                    console.log(table)
                         
                     return (
                         <tbody>
