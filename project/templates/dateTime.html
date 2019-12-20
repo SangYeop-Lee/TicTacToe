@@ -6,10 +6,23 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
         <link rel="stylesheet" type="text/css" href="navbar.css">
         <style>
-            #main {
-                background-color: black;
-                
+            #columns {
+                display: grid;
+                grid-template-columns: 1fr 500px;
+
+                background-color: white;
+                margin-top: 129px;
+                margin-left: 200px;
             }
+            #columns .grid-item {
+                padding: 20px;
+            }
+            #columns #calendar caption{
+                font-size: 24px;
+                font-weight: 600;
+                text-align: center;
+            }
+
         </style>
 
         <title>TODO</title>
@@ -26,6 +39,9 @@
                         dDay: ["item1", "item2", "item3", "item4"],
                         todo: ["todo1","todo2", "todo3", "todo4"],
                         today: new Date(),
+                        diary: ["this is diary number one.",
+                        "this is diary number two.",
+                        "this is diary number three.",]
                     }
                 }
                 
@@ -39,6 +55,10 @@
                                 dDay={this.state.dDay}
                                 todo={this.state.todo}
                             />
+                            <Main 
+                                diary={this.state.diary}
+                                today={this.state.today}
+                            />
                         </div>
 
                     )
@@ -49,15 +69,31 @@
                 
                 render() {
                     return (
-                        <div id="main">
-                            
+                        <div id="columns">
+                            <div className="grid-item" id="diary">
+                                {this.props.diary.map((diary, i) =>
+                                    <div key={i}>{diary}</div>
+                                )}
+                            </div>
+
+                            <div className="grid-item" id="calendar">
+                                {this.calandar()}
+                            </div>
                         </div>
                     )
                 }
 
-                renderCalendar() {
+                calandar () {
+                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
+                    return (
+                        <table>
+                            <caption>{monthNames[this.props.today.getMonth()]}</caption>
+                            <thead></thead>
 
+                        </table>
+                    )
                 }
+
             }
 
             class Sidebar extends React.Component {
