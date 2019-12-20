@@ -17,10 +17,21 @@
             #columns .grid-item {
                 padding: 20px;
             }
+            #columns table {
+                border-collapse: collapse;
+            }
             #columns #calendar caption{
                 font-size: 24px;
                 font-weight: 600;
                 text-align: center;
+            }
+            #calendar thead {
+                border-bottom: 1px solid black;
+            }
+            #calendar td {
+                width: 70px;
+                height: 30px;
+                padding: 5px;
             }
 
         </style>
@@ -39,9 +50,9 @@
                         dDay: ["item1", "item2", "item3", "item4"],
                         todo: ["todo1","todo2", "todo3", "todo4"],
                         today: new Date(),
-                        diary: ["this is diary number one.",
-                        "this is diary number two.",
-                        "this is diary number three.",]
+                        diary: ["Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",]
                     }
                 }
                 
@@ -70,28 +81,82 @@
                 render() {
                     return (
                         <div id="columns">
-                            <div className="grid-item" id="diary">
+                            <ul className="grid-item" id="diary">
                                 {this.props.diary.map((diary, i) =>
-                                    <div key={i}>{diary}</div>
+                                    <li key={i}>{diary}</li>
                                 )}
-                            </div>
+                            </ul>
 
                             <div className="grid-item" id="calendar">
-                                {this.calandar()}
+                                {this.calendar()}
                             </div>
                         </div>
                     )
                 }
 
-                calandar () {
+                insertDate() {
+                    const today = this.props.today;
+                    var first = JSON.parse(JSON.stringify(today))
+                    first.setDate(1)
+                    
+                    var end = JSON.parse(JSON.stringify(first))
+                    end.setMonth(end.getMonth()+1)
+
+                    if (end.getDay()!==0) {
+                        end.setDate(end.getDate()+6-end.getDay())
+                    }
+                    first.setDate(first.getDate()-first.getDay())
+
+                    console.log(first, end)
+                    
+                    var table = []
+                    for(var date=JSON.parse(JSON.stringify(first)); date!==end;) {
+                        var children = []
+                        for (; date.getDay()!==6; date.setDate(date.getDate()+1)) {
+                            var tmp = date.getDate()
+                            console.log(tmp)
+                            children.push({tmp})
+                        }
+                        table.push(children)
+                    }
+                        
+                    return (
+                        <tbody>
+                        {table.map((week, i)=>
+                            <tr key={i}>
+                                {week.map((day, j) =>
+                                    <td key={j}>{day}</td>
+                                )}
+                            </tr>
+                        )}
+                        </tbody>
+                    )
+                }
+
+                calendar () {
+                    
                     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
                     return (
                         <table>
                             <caption>{monthNames[this.props.today.getMonth()]}</caption>
-                            <thead></thead>
-
+                            <thead>
+                                <tr>
+                                    <td>Sun.</td>
+                                    <td>Mon.</td>
+                                    <td>Tue.</td>
+                                    <td>Wed.</td>
+                                    <td>Thur.</td>
+                                    <td>Fri.</td>
+                                    <td>Sat.</td>
+                                </tr>
+                            </thead>
+                            {this.insertDate()}
                         </table>
                     )
+                }
+
+                date () {
+
                 }
 
             }
