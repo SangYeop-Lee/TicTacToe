@@ -96,10 +96,10 @@
 
                 insertDate() {
                     const today = this.props.today;
-                    var first = JSON.parse(JSON.stringify(today))
+                    var first = new Date(today)
                     first.setDate(1)
                     
-                    var end = JSON.parse(JSON.stringify(first))
+                    var end = new Date(first)
                     end.setMonth(end.getMonth()+1)
 
                     if (end.getDay()!==0) {
@@ -110,7 +110,8 @@
                     console.log(first, end)
                     
                     var table = []
-                    for(var date=JSON.parse(JSON.stringify(first)); date!==end;) {
+                    var date=new Date(first)
+                    for(; date!==end;) {
                         var children = []
                         for (; date.getDay()!==6; date.setDate(date.getDate()+1)) {
                             var tmp = date.getDate()
