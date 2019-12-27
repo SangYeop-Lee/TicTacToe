@@ -1,159 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
         <style>
-            table {
-                border-collapse: collapse;
-            }
-            td {
-                width: 150px;
-                border: 1px solid black;
-                text-align: center;
-            }
-            #id {
+            div {
+                display: inline-block;
+                height: 100px;
                 width: 400px;
-                height: 200px;
-                font: 45px black bold;
+                margin: 10px;
+                background-color: grey;
+                text-align: center;
+                vertical-align: text-bottom;
             }
         </style>
-
-        <title>TODO</title>
     </head>
     <body>
-        <div id="app"></div>
-        <script type="text/babel">
-
-            class App extends React.Component {
-
-                constructor(props) {
-                    super(props);
-                    this.state = {
-                        viewFront: true,
-                        cards: [],
-                        input: ["", ""],
-                        viewEditor: true,
-                        index: 0
-                    };
-                }
-
-                render() {
-                    if (this.state.viewEditor) {
-                        return this.renderEditor();
-                    } else {
-                        return this.renderViewer();
-                    }
-                }
-
-                renderViewer() {
-                    return (
-                        <div>
-                            <button onClick={this.turnCard} id="card">{this.state.viewFront ? this.state.cards[this.state.index][0] : this.state.cards[this.state.index][1]}</button>
-                            <button onClick={this.nextCard}>Next Card</button>
-                            <button onClick={this.switchView}>Switch to Editor</button>
-                        </div>
-                    )
-                }
-
-                switchView = () => {
-                    const boolean = this.state.viewEditor ? false : true
-                    this.setState({
-                        viewEditor: boolean
-                    })
-                }
-
-                turnCard = () => {
-                    const boolean = this.state.viewFront ? false : true
-                    this.setState({
-                        viewFront: boolean
-                    })
-                }
-
-                nextCard = () => {
-
-                    this.setState(state => ({
-                        index: state.index+1
-                    }))
-
-                    if (this.state.index+1 === this.state.cards.length) {
-                        this.setState({
-                            index: 0
-                        })
-                    }
-                }
-
-                renderEditor() {
-                    return (
-                        <div>
-                            <h1>Card Editor</h1>
-                            <table>
-                                <tr>
-                                    <td><h2>Front</h2></td>
-                                    <td><h2>Back</h2></td>
-                                    <td><h2>Delete</h2></td>
-                                </tr>
-                                {this.state.cards.map((card, i) =>
-                                    <tr key={i}>
-                                        <td>{card[0]}</td>
-                                        <td>{card[1]}</td>
-                                        <td><button data-index={i} onClick={this.deleteCard}>Delete</button></td>
-                                    </tr>
-                                )}
-                            </table>
-                            <div>
-                                {this.state.input.map((input, i) =>
-                                    <input onKeyPress={this.inputKeyPress} onChange={this.handleChange} key={i} data-index={i} value={input} />
-                                )}
-                                <button onClick={this.addCard}>Add Card</button>
-                            </div>
-                            <button onClick={this.switchView}>Switch to Viewer</button>
-                        </div>
-                    )
-                }
-
-
-                handleChange = (event) => {
-                    const index = event.target.dataset.index
-                    const value = event.target.value
-                    this.setState(state => {
-                        const input = state.input
-                        input[index] = value
-                        return {
-                            input
-                        }
-                    })
-                }
-
-                addCard = () => {
-                    this.setState(state => ({
-                        cards: [...state.cards, state.input],
-                        input: ["", ""]
-                    }))
-                }
-
-                inputKeyPress = (event) => {
-                    if (event.key === "Enter") {
-                        this.addCard();
-                    }
-                }
-
-                deleteCard = (event) => {
-                    const index = event.target.dataset.index
-
-                    this.setState(state => {
-                        const cards = [...state.cards];
-                        cards.splice(index, 1);
-                        return{
-                            cards
-                        }
-                    })
-                }
-            }
-
-            ReactDOM.render(<App />, document.querySelector('#app'))
+        <script>
+            let username = "sangyeop-lee"
+            document.body.innerHTML = `
+            <div>${username}</div>
+            `
         </script>
     </body>
 </html>
