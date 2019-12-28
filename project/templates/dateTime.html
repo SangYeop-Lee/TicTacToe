@@ -4,30 +4,41 @@
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="reset.css">
+
         <link rel="stylesheet" type="text/css" href="navbar.css">
+
         <style>
-            #columns {
+            #contents {
                 display: grid;
                 grid-template-columns: 1fr 500px;
 
-                background-color: white;
-                margin-top: 129px;
+                margin-top: 100px;
                 margin-left: 200px;
             }
-            #columns .grid-item {
+            #contents .grid-item {
                 padding: 20px;
             }
-            #columns #calendar {
-                background-color: beige;
+
+            #contents #diary .diary-items {
+                height: 200px;
+                margin: 1px;
+                text-align: center;
+                font-size: 24px;
+                background-color: rgba(1.0, 1.0, 1.0, 0.1);
+            }
+            #contents #diary .diary-items .diary-contents{
+                position:relative;
+                top: 50%;
+            }
+            #contents #calendar {
                 height: 290px;
             }
-            #columns table {
-                border-collapse: collapse;
-            }
-            #columns #calendar caption{
+            #contents #calendar caption{
                 font-size: 24px;
                 font-weight: 600;
                 text-align: center;
+                margin: 5px 0px 20px 0px;
             }
             #calendar thead {
                 border-bottom: 1px solid black;
@@ -44,6 +55,8 @@
     </head>
     <body>
         <div id="app"></div>
+
+
         <script type="text/babel">
 
             class App extends React.Component {
@@ -54,9 +67,7 @@
                         dDay: ["item1", "item2", "item3", "item4"],
                         todo: ["todo1","todo2", "todo3", "todo4"],
                         today: new Date(),
-                        diary: ["Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",]
+                        diary: ["Lorem", "Ipsum", "Dollar",]
                     }
                 }
                 
@@ -75,21 +86,23 @@
                                 today={this.state.today}
                             />
                         </div>
-
                     )
                 }
             }
+
 
             class Main extends React.Component {
                 
                 render() {
                     return (
-                        <div id="columns">
-                            <ul className="grid-item" id="diary">
+                        <div id="contents">
+                            <div className="grid-item" id="diary">
                                 {this.props.diary.map((diary, i) =>
-                                    <li key={i}>{diary}</li>
+                                    <div className="diary-items" key={i}>
+                                        <div className="diary-contents">{diary}</div>
+                                    </div>
                                 )}
-                            </ul>
+                            </div>
 
                             <div className="grid-item" id="calendar">
                                 {this.calendar()}
@@ -164,26 +177,27 @@
 
             }
 
+
             class Sidebar extends React.Component {
                 
                 render() {
                     return (
                         <div id="sidebar">
                             <div id="dDay">
-                                {this.props.dDay.map((item, i) => <h4 key={i}>{item}</h4>)}
+                                {this.props.dDay.map((item, i) => <div className="dDay-items" key={i}>{item}</div>)}
                             </div>
                             <hr />
                             <ul id="todo">
-                                {this.props.todo.map((item, i) => <li key={i}>{item}</li>)}
+                                {this.props.todo.map((item, i) => <div className="todo-items" key={i}>{item}</div>)}
                             </ul>
                         </div>
                     )
                 }
             }
 
+
             class Navbar extends React.Component {
 
-                
                 render() {
                     return (
                         <div id="navbar-top">
@@ -195,8 +209,6 @@
                         </div>
                     )
                 }
-
-
 
                 dateTime () {
                     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
@@ -211,25 +223,6 @@
                         </div>
                     )
                 }
-
-            //     weather() {
-            //         // use openweathermap api
-            //         const lat = 
-            //         const lon = 
-            //         fetch(`https://community-open-weather-map.p.rapidapi.com/weather?lat=${lat}&lon=${state.lon}&callback=test&id=2172797&units=%2522metric%2522%20or%20%2522imperial%2522&mode=xml%252C%20html&q=Seoul`, {
-            //             "method": "GET",
-            //             "headers": {
-            //                 "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-            //                 "x-rapidapi-key": "132de901f2msh07ddc105ef81e6bp1895cdjsnfc72e16418a9"
-            //             }
-            //         })
-            //         .then(response => response.json())
-            //         .then(data => {console.log(data)})
-            //         .catch(err => {
-            //             console.log(err);
-            //         });
-            //     }
-                
             }
                 
 

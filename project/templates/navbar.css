@@ -10,7 +10,6 @@
     background-color: #f8f1e9;
     opacity: 0.9;
     padding: 20px;
-    margin-left: -10px;
     display: grid;
     grid-template-columns: 240px auto 240px;
 }
@@ -47,16 +46,21 @@
 
 #sidebar {
     position: fixed;
+    margin-left: 30px;
     top:103px;
     width: 150px;
-    height: 1400px;
-    margin: 20px;
     background-color: white;
 }
 #sidebar #dDay {
     text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 2;
 }
-#sidebar hr {
-    width: 100%;
+
+#sidebar #todo {
+    margin-top: 20px;
+    text-indent: 30px;
+    line-height: 2;
 }
 
