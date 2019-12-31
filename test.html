@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello</title>
-        <meta name="viewport" content="width=device-width, initail-sclae=1.0">
+        <title>Count Down</title>
         <style>
-            .grid {
-                background-color: green;
-                display: grid;
-                padding: 20px;
-                grid-column-gap: 20px;
-                grid-row-gap: 10px;
-                grid-template-columns: 200px 200px auto;
-            }
-
-            .grid-item {
-                background-color: white;
-                font-size: 20px;
-                padding: 20px;
+            div {
                 text-align: center;
+                font-size: 8rem;
+                font-weight: 800;
             }
         </style>
     </head>
     <body>
-        <div class="grid">
-            <div class="grid-item">2.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">3.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">1.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">4.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">5.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">6.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">7.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">8.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">9.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">10.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">11.가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-            <div class="grid-item">12가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</div>
-        </div>
+        <div id="counter"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                setInterval(setTime, 1)
+            });
+            var today;
+            const newYear = new Date('2020/1/1/01:0:0')
+            
+            function setTime() {
+                today = new Date()
+                time = newYear-today
+                var minute = Math.floor(time/1000/60%60)
+                var seconds = Math.floor(time/1000%60)
+                var milliseconds = Math.floor(time%1000)
+                document.getElementById('counter').innerHTML = minute+':'+seconds+':'+milliseconds
+            }
+            </script>
     </body>
 </html>
