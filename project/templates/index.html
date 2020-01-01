@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+        <style>
+            #contents {
+                display: grid;
+                grid-template-columns: 1fr 500px;
+
+                margin-top: 100px;
+                margin-left: 200px;
+            }
+            #contents .grid-item {
+                padding: 20px;
+            }
+
+            #contents #diary .diary-items {
+                height: 15vw;
+                padding-left: 2rem;
+                margin: 0.5px;
+                font-size: 3vw;
+                background-color: rgba(1.0, 1.0, 1.0, 0.1);
+            }
+            #contents #diary .diary-items .diary-contents{
+                position:relative;
+                top: 20%;
+            }
+
+            #contents #calendar {
+                height: 290px;
+            }
+            #contents #calendar caption{
+                font-size: 24px;
+                font-weight: 600;
+                text-align: center;
+                margin: 5px 0px 20px 0px;
+            }
+            #calendar thead {
+                border-bottom: 1px solid black;
+            }
+            #calendar td {
+                width: 70px;
+                height: 30px;
+                padding: 5px;
+            }
+
+        </style>
+
+        <title>TODO</title>
+    </head>
+    <body>
+        <div id="app"></div>
+
+
+        <script type="text/babel">
+
+            class App extends React.Component {
+
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        dDay: ["item1", "item2", "item3", "item4"],
+                        todo: ["todo1","todo2", "todo3", "todo4"],
+                        today: new Date(),
+                        diary: ["Lorem", "Ipsum", "Dollar",]
+                    }
+                }
+
+                render() {
+                    return (
+                        <div>
+                            <Navbar
+                                today={this.state.today}
+                            />
+                            <Sidebar
+                                dDay={this.state.dDay}
+                                todo={this.state.todo}
+                            />
+                            <Main
+                                diary={this.state.diary}
+                                today={this.state.today}
+                            />
+                        </div>
+                    )
+                }
+            }
+
+
+            class Main extends React.Component {
+
+                render() {
+                    return (
+                        <div id="contents">
+                            <div className="grid-item" id="diary">
+                                {this.props.diary.map((diary, i) =>
+                                    <div className="diary-items" key={i}>
+                                        <div className="diary-contents">{diary}</div>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="grid-item" id="calendar">
+                                {this.calendar()}
+                            </div>
+                        </div>
+                    )
+                }
+
+                insertDate() {
+                    const today = this.props.today;
+                    var first = new Date(today)
+                    first.setDate(1)
+
+                    var end = new Date(first)
+                    end.setMonth(end.getMonth()+1)
+
+                    if (end.getDay()!==0) {
+                        end.setDate(end.getDate()+6-end.getDay())
+                    }
+                    first.setDate(first.getDate()-first.getDay())
+
+                    var table = []
+                    var date = new Date(first)
+                    for(; date<=end; ) {
+                        var children = []
+                        for (var i = 0; i < 7; i++, date.setDate(date.getDate()+1)) {
+                            children.push(date.getDate())
+                        }
+                        table.push(children)
+                    }
+
+                    console.log(table)
+
+                    return (
+                        <tbody>
+                        {table.map((week, i)=>
+                            <tr key={i}>
+                                {week.map((day, j) =>
+                                    <td key={j}>{day}</td>
+                                )}
+                            </tr>
+                        )}
+                        </tbody>
+                    )
+                }
+
+                calendar () {
+
+                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
+                    return (
+                        <table>
+                            <caption>{monthNames[this.props.today.getMonth()]}</caption>
+                            <thead>
+                                <tr>
+                                    <td>Sun.</td>
+                                    <td>Mon.</td>
+                                    <td>Tue.</td>
+                                    <td>Wed.</td>
+                                    <td>Thur.</td>
+                                    <td>Fri.</td>
+                                    <td>Sat.</td>
+                                </tr>
+                            </thead>
+                            {this.insertDate()}
+                        </table>
+                    )
+                }
+
+                date () {
+
+                }
+
+            }
+
+
+            class Sidebar extends React.Component {
+
+                render() {
+                    return (
+                        <div id="sidebar">
+                            <div id="dDay">
+                                {this.props.dDay.map((item, i) => <div className="dDay-items" key={i}>{item}</div>)}
+                            </div>
+                            <hr />
+                            <ul id="todo">
+                                {this.props.todo.map((item, i) => <div className="todo-items" key={i}>{item}</div>)}
+                            </ul>
+                        </div>
+                    )
+                }
+            }
+
+
+            class Navbar extends React.Component {
+
+                render() {
+                    return (
+                        <div id="navbar-top">
+                            <div className="grid-item">
+                                {this.dateTime()}
+                            </div>
+                            <div id="home" className="grid-item">hello</div>
+                            <div className="grid-item"></div>
+                        </div>
+                    )
+                }
+
+                dateTime () {
+                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
+                    const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                    return (
+                        <div className="dateTime-grid">
+                            <div id="year" className="grid-item">{this.props.today.getFullYear()}</div>
+                            <div className="grid-item">
+                                <div id="monthDate">{monthNames[this.props.today.getMonth()] + " " + this.props.today.getDate()}</div>
+                                <div id="day">{dayNames[this.props.today.getDay()]}</div>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+
+
+            ReactDOM.render(<App />, document.querySelector('#app'))
+        </script>
+    </body>
+</html>

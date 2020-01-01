@@ -1,0 +1,66 @@
+
+
+/* navbar css */
+
+#navbar-top {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f8f1e9;
+    opacity: 0.9;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 240px auto 240px;
+}
+#navbar-top #home {
+    font-family: Raleway;
+    text-align: center;
+    color: #664c34;
+    letter-spacing: -3px;
+    font-size: 40px;
+}
+
+
+/* dateTime css */
+
+#year {
+    font-size: 30px;
+    text-align: center;
+}
+.dateTime-grid {
+    display:grid;
+    grid-template-columns: 90px 150px;
+}
+
+#monthDate {
+    font-size: 20px;
+}
+
+#day {
+    font-size: 15px;
+}
+
+
+/* sidebar css */
+
+#sidebar {
+    position: fixed;
+    margin-left: 30px;
+    top:103px;
+    width: 150px;
+    background-color: white;
+}
+#sidebar #dDay {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 2;
+}
+
+#sidebar #todo {
+    margin-top: 20px;
+    text-indent: 30px;
+    line-height: 2;
+}
+
