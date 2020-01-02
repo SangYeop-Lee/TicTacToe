@@ -3,10 +3,18 @@
     1. Navbar
 
     2. D-days() and Todo lists(todo / duedate)
-    3. Calender
+    3. Calender (Todo에 추가, D-day에 추가 기능)
+        1. Calendar object
+            Name
+            Start date and End date (그날 0시 ~ 24시이면 한 날짜로.)
+            Todo에 올릴 것인가?
+            Dday에 올릴 것인가?
 
     4. Diaries
     5. Pictures
+        1. 지도에 펼치기.
+        2. 화질에 따라 용량 조정하기. (해상도를 낮춰도 difference가 적은 경우 낮은 해상도로 저장.)
+
 
 2. Calender pages
 

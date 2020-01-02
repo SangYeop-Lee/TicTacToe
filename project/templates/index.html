@@ -53,6 +53,10 @@
                 padding: 5px;
             }
 
+            a {
+                font-decoration: none;
+            }
+
         </style>
 
         <title>TODO</title>
@@ -100,17 +104,21 @@
                 render() {
                     return (
                         <div id="contents">
-                            <div className="grid-item" id="diary">
-                                {this.props.diary.map((diary, i) =>
-                                    <div className="diary-items" key={i}>
-                                        <div className="diary-contents">{diary}</div>
-                                    </div>
-                                )}
-                            </div>
+                            <a id="diary-url" href="{{ url_for('diary') }}">
+                                <div className="grid-item" id="diary">
+                                    {this.props.diary.map((diary, i) =>
+                                        <div className="diary-items" key={i}>
+                                            <div className="diary-contents">{diary}</div>
+                                        </div>
+                                    )}
+                                </div>
+                            </a>
 
-                            <div className="grid-item" id="calendar">
-                                {this.calendar()}
-                            </div>
+                            <a id="calendar-url" href="{{ url_for('calendar') }}">
+                                <div className="grid-item" id="calendar">
+                                    {this.calendar()}
+                                </div>
+                            </a>
                         </div>
                     )
                 }
@@ -142,6 +150,7 @@
 
                     return (
                         <tbody>
+
                         {table.map((week, i)=>
                             <tr key={i}>
                                 {week.map((day, j) =>
@@ -149,6 +158,7 @@
                                 )}
                             </tr>
                         )}
+
                         </tbody>
                     )
                 }

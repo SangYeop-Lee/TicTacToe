@@ -6,13 +6,13 @@
 
         <!-- css -->
         <link rel="stylesheet" type="text/css" href="navbar.css" />
-    
+
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
         <style>
-            
+
         </style>
 
         <title>TODO</title>
@@ -54,8 +54,8 @@
 
             //     weather() {
             //         // use openweathermap api
-            //         const lat = 
-            //         const lon = 
+            //         const lat =
+            //         const lon =
             //         fetch(`https://community-open-weather-map.p.rapidapi.com/weather?lat=${lat}&lon=${state.lon}&callback=test&id=2172797&units=%2522metric%2522%20or%20%2522imperial%2522&mode=xml%252C%20html&q=Seoul`, {
             //             "method": "GET",
             //             "headers": {
@@ -69,7 +69,7 @@
             //             console.log(err);
             //         });
             //     }
-                
+
             }
 
             class Sidebar extends React.Component {
@@ -86,7 +86,7 @@
                     )
                 }
             }
-            
+
             class App extends React.Component {
 
                 constructor(props) {
@@ -102,13 +102,13 @@
                     return (
                         <div>
                             {this.renderNavbar()}
-                            <Sidebar 
+                            <Sidebar
                                 height={this.state.height}
                             />
                         </div>
                     )
                 }
-                
+
                 componentDidMount () {
                     this.setState({
                         height: this.box.clientHeight
