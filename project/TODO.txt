@@ -9,6 +9,7 @@
             Start date and End date (그날 0시 ~ 24시이면 한 날짜로.)
             Todo에 올릴 것인가?
             Dday에 올릴 것인가?
+            Tag ( self, friends, family, lover, etc )
 
     4. Diaries
     5. Pictures
