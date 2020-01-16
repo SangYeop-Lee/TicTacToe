@@ -1,0 +1,6 @@
+<form method="POST" action="{{ url_for('addDDay') }}">
+    {{ form.csrf_token }}
+    {{ form.name() }}
+    {{ form.date() }}
+    {{ form.submit() }}
+</form>

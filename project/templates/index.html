@@ -72,7 +72,6 @@
                 constructor(props) {
                     super(props);
                     this.state = {
-                        dDay: ["item1", "item2", "item3", "item4"],
                         todo: ["todo1","todo2", "todo3", "todo4"],
                         today: new Date(),
                         diary: ["Lorem", "Ipsum", "Dollar",]
@@ -86,7 +85,6 @@
                                 today={this.state.today}
                             />
                             <Sidebar
-                                dDay={this.state.dDay}
                                 todo={this.state.todo}
                             />
                             <Main
@@ -146,8 +144,6 @@
                         table.push(children)
                     }
 
-                    console.log(table)
-
                     return (
                         <tbody>
 
@@ -198,7 +194,18 @@
                     return (
                         <div id="sidebar">
                             <div id="dDay">
-                                {this.props.dDay.map((item, i) => <div className="dDay-items" key={i}>{item}</div>)}
+                                {% for dday in ddays %}
+                                    <div className="dDay-items">{{ dday.name }}, D
+                                    {%- if dday.daysLeft > 0 -%}
+                                        +{{ dday.daysLeft+1 }}
+                                    {%- else -%}
+                                        {{ dday.daysLeft }}
+                                    {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div id="dDay-adder">
+                                <a href="{{ url_for('addDDay') }}">add</a>
                             </div>
                             <hr />
                             <ul id="todo">
