@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -12,6 +14,10 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css') }}">
 
         <style>
+            body {
+                font-family: 'Source Sans Pro', sans-serif;
+            }
+
             #contents {
                 display: grid;
                 grid-template-columns: 1fr 500px;
@@ -24,10 +30,10 @@
             }
 
             #contents #diary .diary-items {
-                height: 15vw;
+                line-height: 9rem;
                 padding-left: 2rem;
-                margin: 0.5px;
-                font-size: 3vw;
+                margin: 2px;
+                font-size: 2rem;
                 background-color: rgba(1.0, 1.0, 1.0, 0.1);
             }
             #contents #diary .diary-items .diary-contents{
@@ -54,7 +60,8 @@
             }
 
             a {
-                font-decoration: none;
+                text-decoration: none;
+                color: black;
             }
 
         </style>
@@ -181,10 +188,6 @@
                     )
                 }
 
-                date () {
-
-                }
-
             }
 
 
@@ -205,12 +208,39 @@
                                 {% endfor %}
                             </div>
                             <div id="dDay-adder">
-                                <a href="{{ url_for('addDDay') }}">add</a>
+                                <a href="{{ url_for('appendDay') }}">add</a>
                             </div>
                             <hr />
                             <ul id="todo">
                                 {this.props.todo.map((item, i) => <div className="todo-items" key={i}>{item}</div>)}
                             </ul>
+                        </div>
+                    )
+                }
+
+                appendDay () {
+
+                    return (
+                        <div className="appendDay">
+
+                            // button
+                            <button id="add">add</div>
+
+                            // modal
+                            <div className="modal">
+
+                                //modal content
+                                <div className="modal-content">
+                                    // exit button
+                                    <span className="close">&times;</span>
+                                    <form method="POST" action="{{ url_for('addDDay') }}">
+                                        {{ form.csrf_token }}
+                                        Name: {{ form.name() }} <br>
+                                        Date: {{ form.date() }} <br>
+                                        {{ form.submit() }}
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     )
                 }
@@ -233,7 +263,7 @@
 
                 dateTime () {
                     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "Augaust", "September", "October", "November", "December"]
-                    const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
                     return (
                         <div className="dateTime-grid">
                             <div id="year" className="grid-item">{this.props.today.getFullYear()}</div>

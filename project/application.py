@@ -24,7 +24,7 @@ def index():
         print(form.password.data)
 
         if form.password.data == "password":
-            return redirect(url_for("home"), code=307)
+            return redirect(url_for("home"))
 
         else:
             message = "wrong password"
@@ -40,11 +40,6 @@ def home():
     for dday in ddays:
         ddayslist.append(DaysLeft(dday.name, dday.date))
 
-    return render_template('index.html', ddays=ddayslist)
-
-@app.route("/add", methods=["GET", "POST"])
-def addDDay():
-
     form = DdayForm()
 
     if form.validate_on_submit():
@@ -52,9 +47,10 @@ def addDDay():
         dday = Dday(name=form.name.data, date=form.date.data)
         db.session.add(dday)
         db.session.commit()
-        return redirect(url_for("home"), code=307)
+        return redirect(url_for("home"))
 
-    return render_template("addDDay.html", form=form)
+    return render_template('index.html', ddays=ddayslist)
+
 
 @app.route("/calendar")
 def calendar():
