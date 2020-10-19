@@ -31,15 +31,22 @@
                 cursor: pointer;
             }
 
-            .parent-dropdown:visited + #dropdown {
-                transition: all .5s ease;
-                display: flex;
+            .parent-dropdown:hover + #dropdown {
+                transition: visibility .3s ease;
+                visibility: visible;
+            }
+            #dropdown > *:hover {
+                cursor: pointer;
+            }
+            #dropdown:hover {
+                visibility: visible;
             }
 
             #dropdown{
                 list-style: none;
                 position: absolute;
-                display: none;
+                display: flex;
+                visibility: hidden;
                 flex-direction: column;
                 top: 10px;
                 left: 360px;
