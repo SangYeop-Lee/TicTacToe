@@ -7,12 +7,36 @@ header {
 /* main, section grid */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 300px;
-    height: 1000px;
+    height: 800px;
 }
+
+@media (max-width: 10000px) {
+    .grid-container {
+        grid-template-columns: 1fr 900px;
+    }
+}
+@media (max-width: 1680px) {
+    .grid-container {
+        grid-template-columns: 1fr 600px;
+    }
+}
+
+@media (max-width: 1680px) {
+    .grid-container {
+        grid-template-columns: 1fr 300px;
+    }
+}
+@media (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: 1fr 200px;
+    }
+}
+
 .items {
-    border: 1px solid black;
     height: inherit;
+}
+.items:not(:last-child) {
+    box-shadow: 1px 0px 1px -1px black;
 }
 
 /* todo-css */
@@ -21,21 +45,30 @@ header {
 }
 /* title: h1, 1st level: h2, 2nd level: ul, li */
 #todo > h1 {
-    margin: 40px 10px 0;
+    margin: 3rem 2rem 0;
     font-size: 2.5rem;
     font-weight: 600;
 }
 #todo > h2 {
-    margin: 50px 20px 0;
+    margin: 2.4rem 4.8rem 0;
     font-size: 1.7rem;
+}
+input + label {
+    cursor: pointer;
+}
+.cursor-default {
+    cursor: default;
 }
 
 /* li > input > label css */
 #todo li {
     display: table;
     position: relative;
-    margin: 25px 40px 0;
-    font-size: 0.95rem;
+    margin: 1.2rem 7rem 0;
+    font-size: 1rem;
+}
+#todo li:first-child {
+    margin-top: 1.8rem;
 }
 #todo input {
     display: none;
@@ -43,13 +76,21 @@ header {
 #todo input + label::after {
     content: '';
     width: 0;
-    height: 3px;
+    height: 0.1rem;
+    left: -5%;
     top: 0.4rem;
     position: absolute;
     display: block;
     background: rgb(252, 87, 87);
     transition: width .3s ease;
 }
-#todo input:checked + label::after{
-    width: 100%;
+#todo input:checked + label::after {
+    width: 110%;
+}
+#todo input + label {
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+#todo input:checked + label {
+    opacity: 0.7;
 }
