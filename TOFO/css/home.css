@@ -42,11 +42,13 @@ header {
     box-shadow: 1px 0px 1px -1px black;
 }
 
-/* todo-css */
+
+/* todo css */
+
 #todo {
     position: relative;
 }
-/* title: h1, 1st level: h2, 2nd level: ul, li */
+/* css for texts */
 #todo > h1 {
     margin: 3rem 2rem 0;
     font-size: 2.5rem;
@@ -70,7 +72,7 @@ label {
     cursor: default;
 }
 
-/* li > input > label css */
+/* css for label */
 #todo li {
     display: table;
     position: relative;
@@ -92,6 +94,7 @@ label {
 }
 
 #todo input + span {
+    border-radius: 0.5rem;
     display: table;
     padding: .6rem 2rem;
     opacity: 1;
@@ -114,4 +117,10 @@ label {
 }
 #todo input:checked + span {
     opacity: .7;
+}
+
+/* calendar css */
+
+#calendar {
+    border-collapse: collapse;
 }
